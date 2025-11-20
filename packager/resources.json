@@ -1,0 +1,22 @@
+[
+    {
+        "app_name": "Google Drive",
+        "app_url": "https://drive.google.com"
+    },
+    {
+        "app_name": "Localhost",
+        "app_url": "http://localhost"
+    },
+    {
+        "app_name": "Gmail",
+        "app_url": "https://mail.google.com"
+    },
+    {
+        "app_name": "Photopea",
+        "app_url": "https://photopea.com"
+    },
+    {
+        "app_name": "Github",
+        "app_url": "https://github.com"
+    }
+]

@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>close-x.svg</file>
+        <file>back.svg</file>
+        <file>forward.svg</file>
+        <file>add-tab.svg</file>
+        <file>refresh.svg</file>
+        <file>downloads.svg</file>
+    </qresource>
+</RCC>

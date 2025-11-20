@@ -1,0 +1,5 @@
+# Ignore all Python bytecode caches
+__pycache__/
+
+# Ignore everything inside the "generated" folder
+generated/
