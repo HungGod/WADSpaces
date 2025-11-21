@@ -3,3 +3,6 @@ __pycache__/
 
 # Ignore everything inside the "generated" folder
 generated/
+
+# Ignore packager/resources.json
+packager/resources.json
