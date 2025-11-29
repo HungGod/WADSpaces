@@ -380,6 +380,7 @@ set -euo pipefail
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_DIR="{project_dir}"
+VENV_PYTHON="$APP_DIR/.venv/bin/python"
 
 # Change to the app directory
 cd "$APP_DIR"
@@ -390,20 +391,21 @@ URL="${1:-}"
 # If a URL was provided, pass it to main.py
 # If no URL, main.py will use the default from config or app_url
 if [ -n "$URL" ]; then
-    python3 main.py "$URL"
+    "$VENV_PYTHON" main.py "$URL"
 else
-    python3 main.py
+    "$VENV_PYTHON" main.py
 fi"""
     write_executable(os.path.join(out_dir, "launch.sh"), script)
     
-def generate_launch_sh(out_dir: str, project_dir: str, config_path: str, py_bin: str):
+def generate_launch_sh(out_dir: str, project_dir: str, config_path: str):
     script = f"""#!/usr/bin/env bash
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_DIR="{project_dir}"
+VENV_PYTHON="$APP_DIR/.venv/bin/python"
 
 cd "$APP_DIR"
-exec {py_bin} main.py --config "{config_path}"
+exec "$VENV_PYTHON" main.py --config "{config_path}"
 """
     write_executable(os.path.join(out_dir, "launch.sh"), script)
 
@@ -531,8 +533,7 @@ def main():
         print(f"  ✓ Wrote: {config_path}")
 
         # 4) launch.sh
-        py_bin = os.environ.get("APP_PYTHON", sys.executable)
-        generate_launch_sh(app_dir, os.path.abspath(args.project_dir), config_path, py_bin)
+        generate_launch_sh(app_dir, os.path.abspath(args.project_dir), config_path)
         launch_sh = os.path.abspath(os.path.join(app_dir, "launch.sh"))
         print(f"  ✓ Wrote: {launch_sh}")
 
